@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header h4">Užduočių sąrašas</div>
+    <div class="card-body">
+        <button class="btn btn-outline-primary mb-3" routerLink="/tasks/add">Pridėti naują užduotį</button>
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th>Užduotis</th>
+                    <th>Pradžios data</th>
+                    <th>Pabaigos data</th>
+                    <th>Būklė</th>
+                    <th>Veiksmai</th>
+                </tr>
+            </thead>
+            <tbody class="table-bordered">
+                <tr *ngFor="let task of tasks">
+                    <td> {{ task.description }} </td>
+                    <td> {{ task.startDate.toString().slice(0, 10) }} </td>
+                    <td> {{ task.endDate.toString().slice(0, 10) }} </td>
+                    <td> {{ task.status }} </td>
+                    <td>
+                        <button class="btn btn-success me-2" [routerLink]="'/tasks/' + task._id">Atnaujinti</button>
+                        <button class="btn btn-danger" (click)="deleteTask(task._id!)">Ištrinti</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
